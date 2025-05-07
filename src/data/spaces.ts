@@ -1,20 +1,24 @@
 
-import { Space } from '../types';
+import { Office } from '../types';
 
-export const spaces: Space[] = [
+export const spaces: Office[] = [
   {
     id: "1",
-    title: "Modern Office Space in Tech Hub",
-    description: "Bright, open-concept office space with 3 available desks in a bustling tech hub. High-speed internet, 24/7 access, and complimentary coffee.",
-    price: 25,
-    priceUnit: "day",
+    title: "Modernt kontorsutrymme i teknikhubb",
+    description: "Ljust, öppet kontorsutrymme med 3 tillgängliga skrivbord i en livlig teknikhubb. Höghastighetsinternet, tillgång dygnet runt och gratis kaffe.",
+    price: 250,
+    priceUnit: "dag",
     location: {
-      address: "123 Tech Lane",
-      city: "San Francisco",
-      state: "CA",
-      country: "USA"
+      address: "123 Teknikgatan",
+      city: "Stockholm",
+      state: "Stockholm",
+      country: "Sverige",
+      coordinates: {
+        lat: 59.334591,
+        lng: 18.063240
+      }
     },
-    amenities: ["High-speed WiFi", "Standing desks", "Meeting rooms", "Kitchen", "Printing services", "24/7 access"],
+    amenities: ["Höghastighets-WiFi", "Ståbord", "Mötesrum", "Kök", "Utskriftstjänster", "Tillgängligt dygnet runt"],
     images: [
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
       "https://images.unsplash.com/photo-1497366811353-6870744d04b2",
@@ -23,25 +27,30 @@ export const spaces: Space[] = [
     capacity: 10,
     availableSeats: 3,
     hostId: "101",
-    hostName: "TechCorp Inc.",
+    hostName: "TechCorp AB",
     hostAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
     rating: 4.8,
     reviewCount: 24,
-    featured: true
+    featured: true,
+    officeType: "kontorsplats"
   },
   {
     id: "2",
-    title: "Creative Coworking Space Downtown",
-    description: "Stylish coworking space in a renovated warehouse. Perfect for creatives and entrepreneurs looking for an inspiring environment.",
-    price: 20,
-    priceUnit: "day",
+    title: "Kreativ samarbetsplats i centrum",
+    description: "Stilfull samarbetsplats i ett renoverat lager. Perfekt för kreativa personer och entreprenörer som söker en inspirerande miljö.",
+    price: 200,
+    priceUnit: "dag",
     location: {
-      address: "456 Design Avenue",
-      city: "Portland",
-      state: "OR",
-      country: "USA"
+      address: "456 Designvägen",
+      city: "Göteborg",
+      state: "Västra Götaland",
+      country: "Sverige",
+      coordinates: {
+        lat: 57.708870,
+        lng: 11.974560
+      }
     },
-    amenities: ["WiFi", "Coffee bar", "Lounge area", "Bike storage", "Events space", "Shower facilities"],
+    amenities: ["WiFi", "Kaffebar", "Loungeområde", "Cykelförvaring", "Eventsyta", "Duschmöjligheter"],
     images: [
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36",
@@ -50,25 +59,30 @@ export const spaces: Space[] = [
     capacity: 25,
     availableSeats: 8,
     hostId: "102",
-    hostName: "Design Collective",
+    hostName: "Design Kollektivet",
     hostAvatar: "https://randomuser.me/api/portraits/women/44.jpg",
     rating: 4.6,
     reviewCount: 36,
-    featured: true
+    featured: true,
+    officeType: "samarbetsplats"
   },
   {
     id: "3",
-    title: "Executive Office Suite with City Views",
-    description: "Premium executive suite with panoramic city views. Private office space with access to shared amenities and conference facilities.",
-    price: 45,
-    priceUnit: "day",
+    title: "Exklusiv kontorssuite med stadsutsikt",
+    description: "Premium kontorssuite med panoramautsikt över staden. Privat kontorsutrymme med tillgång till gemensamma bekvämligheter och konferensfaciliteter.",
+    price: 450,
+    priceUnit: "dag",
     location: {
-      address: "789 Financial District",
-      city: "New York",
-      state: "NY",
-      country: "USA"
+      address: "789 Finansgatan",
+      city: "Stockholm",
+      state: "Stockholm",
+      country: "Sverige",
+      coordinates: {
+        lat: 59.330650,
+        lng: 18.068580
+      }
     },
-    amenities: ["Premium furniture", "Private meeting room", "Executive lounge", "Mail handling", "IT support", "Catering options"],
+    amenities: ["Premium möbler", "Privat mötesrum", "Exklusiv lounge", "Posthantering", "IT-support", "Cateringalternativ"],
     images: [
       "https://images.unsplash.com/photo-1524758631624-e2822e304c36",
       "https://images.unsplash.com/photo-1604328698692-f76ea9498e76",
@@ -77,25 +91,30 @@ export const spaces: Space[] = [
     capacity: 4,
     availableSeats: 2,
     hostId: "103",
-    hostName: "Empire Offices LLC",
+    hostName: "Empire Offices AB",
     hostAvatar: "https://randomuser.me/api/portraits/men/59.jpg",
     rating: 4.9,
     reviewCount: 18,
-    featured: true
+    featured: true,
+    officeType: "helt kontor"
   },
   {
     id: "4",
-    title: "Startup-Friendly Shared Office",
-    description: "Affordable shared space perfect for startups and small teams. Collaborative environment with all essential amenities.",
-    price: 15,
-    priceUnit: "day",
+    title: "Startup-vänligt delat kontor",
+    description: "Prisvärt delat utrymme perfekt för startups och små team. Samarbetsmiljö med alla väsentliga bekvämligheter.",
+    price: 150,
+    priceUnit: "dag",
     location: {
-      address: "321 Innovation Road",
-      city: "Austin",
-      state: "TX",
-      country: "USA"
+      address: "321 Innovationsvägen",
+      city: "Malmö",
+      state: "Skåne",
+      country: "Sverige",
+      coordinates: {
+        lat: 55.605060,
+        lng: 13.001610
+      }
     },
-    amenities: ["WiFi", "Shared kitchen", "White boards", "Free parking", "Game room", "Monthly networking events"],
+    amenities: ["WiFi", "Delat kök", "White boards", "Gratis parkering", "Spelhörna", "Månatliga nätverksträffar"],
     images: [
       "https://images.unsplash.com/photo-1497215728101-856f4ea42174",
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
@@ -104,25 +123,30 @@ export const spaces: Space[] = [
     capacity: 20,
     availableSeats: 12,
     hostId: "104",
-    hostName: "Startup Hub",
+    hostName: "StartupHub",
     hostAvatar: "https://randomuser.me/api/portraits/women/23.jpg",
     rating: 4.5,
     reviewCount: 42,
-    featured: false
+    featured: false,
+    officeType: "samarbetsplats"
   },
   {
     id: "5",
-    title: "Quiet Suburban Office Space",
-    description: "Peaceful office space in a suburban setting. Escape the hustle of downtown while still having access to great amenities.",
-    price: 18,
-    priceUnit: "day",
+    title: "Lugnt förortskontor",
+    description: "Lugnt kontorsutrymme i förortsmiljö. Fly från inner stadens jäkt men ha ändå tillgång till bra bekvämligheter.",
+    price: 180,
+    priceUnit: "dag",
     location: {
-      address: "567 Willow Lane",
-      city: "Minneapolis",
-      state: "MN",
-      country: "USA"
+      address: "567 Pilvägen",
+      city: "Uppsala",
+      state: "Uppsala",
+      country: "Sverige",
+      coordinates: {
+        lat: 59.858560,
+        lng: 17.638730
+      }
     },
-    amenities: ["WiFi", "Ample parking", "Coffee & tea", "Outdoor seating", "Printing services", "Meeting room"],
+    amenities: ["WiFi", "Gott om parkering", "Kaffe & te", "Utomhussittplatser", "Utskriftstjänster", "Mötesrum"],
     images: [
       "https://images.unsplash.com/photo-1604328698692-f76ea9498e76",
       "https://images.unsplash.com/photo-1497366754035-f200968a6e72",
@@ -135,42 +159,44 @@ export const spaces: Space[] = [
     hostAvatar: "https://randomuser.me/api/portraits/men/67.jpg",
     rating: 4.7,
     reviewCount: 29,
-    featured: false
+    featured: false,
+    officeType: "kontorsplats"
   },
   {
     id: "6",
-    title: "Industrial Loft Workspace",
-    description: "Stylish loft space with industrial design elements. Open plan with dedicated desks and plenty of natural light.",
-    price: 22,
-    priceUnit: "day",
+    title: "Industriell loftkontorsmiljö",
+    description: "Stilfull loftmiljö med industriell design. Öppen planlösning med dedikerade skrivbord och gott om naturligt ljus.",
+    price: 220,
+    priceUnit: "dag",
     location: {
-      address: "890 Warehouse District",
-      city: "Chicago",
-      state: "IL",
-      country: "USA"
+      address: "890 Lagerområdet",
+      city: "Stockholm",
+      state: "Stockholm",
+      country: "Sverige",
+      coordinates: {
+        lat: 59.305490,
+        lng: 18.116440
+      }
     },
-    amenities: ["High-speed WiFi", "Standing desks", "Lounge area", "Beer on tap", "Phone booths", "Event space"],
+    amenities: ["Höghastighets-WiFi", "Ståbord", "Loungeområde", "Öl på fat", "Telefonrum", "Eventsyta"],
     images: [
       "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
       "https://images.unsplash.com/photo-1522071820081-009f0129c71c",
-      "https://images.unsplash.com/photo-1604328698692-f76ea9498e76"
+      "https://images.unsplash.com/photo-1497366754035-f200968a6e72"
     ],
-    capacity: 30,
-    availableSeats: 10,
+    capacity: 12,
+    availableSeats: 4,
     hostId: "106",
-    hostName: "Urban Works",
-    hostAvatar: "https://randomuser.me/api/portraits/women/74.jpg",
-    rating: 4.7,
-    reviewCount: 33,
-    featured: true
+    hostName: "Urban Workspaces",
+    hostAvatar: "https://randomuser.me/api/portraits/women/33.jpg",
+    rating: 4.4,
+    reviewCount: 16,
+    featured: false,
+    officeType: "kontorsplats"
   }
 ];
 
-export const getSpaceById = (id: string): Space | undefined => {
-  return spaces.find(space => space.id === id);
-};
-
-export const getFeaturedSpaces = (): Space[] => {
+export const getFeaturedSpaces = (): Office[] => {
   return spaces.filter(space => space.featured);
 };
 
@@ -180,37 +206,39 @@ export const filterSpaces = (filters: {
   maxPrice?: number;
   minCapacity?: number;
   amenities?: string[];
-}): Space[] => {
+  officeType?: string[];
+}): Office[] => {
   return spaces.filter(space => {
-    // Filter by search term
-    if (filters.search && 
-      !space.title.toLowerCase().includes(filters.search.toLowerCase()) &&
-      !space.description.toLowerCase().includes(filters.search.toLowerCase()) &&
-      !space.location.city.toLowerCase().includes(filters.search.toLowerCase())) {
-      return false;
+    // Sökfiltrering
+    if (filters.search) {
+      const searchTerm = filters.search.toLowerCase();
+      const matchesSearch = 
+        space.title.toLowerCase().includes(searchTerm) ||
+        space.description.toLowerCase().includes(searchTerm) ||
+        space.location.city.toLowerCase().includes(searchTerm) ||
+        space.location.address.toLowerCase().includes(searchTerm);
+      
+      if (!matchesSearch) return false;
     }
     
-    // Filter by price range
-    if (filters.minPrice !== undefined && space.price < filters.minPrice) {
-      return false;
-    }
+    // Prisfiltrering
+    if (filters.minPrice !== undefined && space.price < filters.minPrice) return false;
+    if (filters.maxPrice !== undefined && space.price > filters.maxPrice) return false;
     
-    if (filters.maxPrice !== undefined && space.price > filters.maxPrice) {
-      return false;
-    }
+    // Kapacitetsfiltrering
+    if (filters.minCapacity !== undefined && space.availableSeats < filters.minCapacity) return false;
     
-    // Filter by capacity
-    if (filters.minCapacity !== undefined && space.availableSeats < filters.minCapacity) {
-      return false;
-    }
-    
-    // Filter by amenities
+    // Bekvämlighetssfiltrering
     if (filters.amenities && filters.amenities.length > 0) {
-      for (const amenity of filters.amenities) {
-        if (!space.amenities.includes(amenity)) {
-          return false;
-        }
-      }
+      const hasAllAmenities = filters.amenities.every(amenity => 
+        space.amenities.some(a => a.toLowerCase().includes(amenity.toLowerCase()))
+      );
+      if (!hasAllAmenities) return false;
+    }
+    
+    // Kontorstypsfiltrering
+    if (filters.officeType && filters.officeType.length > 0) {
+      if (!filters.officeType.includes(space.officeType)) return false;
     }
     
     return true;
