@@ -13,6 +13,13 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface SearchFiltersProps {
   onSearch: (filters: {
@@ -21,26 +28,39 @@ interface SearchFiltersProps {
     maxPrice?: number;
     minCapacity?: number;
     amenities?: string[];
+    officeType?: string[];
   }) => void;
 }
 
 const commonAmenities = [
-  "High-speed WiFi",
-  "Meeting rooms",
-  "Kitchen",
-  "24/7 access",
-  "Standing desks",
-  "Printing services",
-  "Coffee bar",
-  "Bike storage",
-  "Parking",
+  "Höghastighets WiFi",
+  "Mötesrum",
+  "Kök",
+  "Dygnet-runt tillgång",
+  "Ståbord",
+  "Utskriftstjänster",
+  "Kaffebar",
+  "Cykelförvaring",
+  "Parkering",
+  "Skrivare/scanner",
+  "Luftkonditionering",
+  "Konferensrum",
+  "Tillagat fika",
+  "Skåp",
+];
+
+const officeTypes = [
+  { value: "samarbetsplats", label: "Co-working Space" },
+  { value: "kontorsplats", label: "Kontorsplats" },
+  { value: "helt kontor", label: "Helt Kontor" },
 ];
 
 const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceRange, setPriceRange] = useState([0, 50]);
+  const [priceRange, setPriceRange] = useState([0, 1000]);
   const [minSeats, setMinSeats] = useState(1);
   const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+  const [selectedOfficeTypes, setSelectedOfficeTypes] = useState<string[]>([]);
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,6 +74,7 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
       maxPrice: priceRange[1],
       minCapacity: minSeats,
       amenities: selectedAmenities.length ? selectedAmenities : undefined,
+      officeType: selectedOfficeTypes.length ? selectedOfficeTypes : undefined,
     });
   };
   
@@ -65,11 +86,20 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
     );
   };
   
+  const toggleOfficeType = (type: string) => {
+    setSelectedOfficeTypes((prev) =>
+      prev.includes(type)
+        ? prev.filter((t) => t !== type)
+        : [...prev, type]
+    );
+  };
+  
   const clearFilters = () => {
     setSearchTerm("");
-    setPriceRange([0, 50]);
+    setPriceRange([0, 1000]);
     setMinSeats(1);
     setSelectedAmenities([]);
+    setSelectedOfficeTypes([]);
     onSearch({});
   };
   
@@ -82,7 +112,7 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <Input
               type="text"
-              placeholder="Search by location, space name or description"
+              placeholder="Sök efter plats, kontorsnamn eller beskrivning"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               className="pl-10"
@@ -99,28 +129,28 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle>Filters</SheetTitle>
+                  <SheetTitle>Filter</SheetTitle>
                 </SheetHeader>
                 <div className="mt-6 space-y-6">
                   {/* Mobile Price Filter */}
                   <div>
-                    <h3 className="text-sm font-semibold mb-3">Price Range</h3>
+                    <h3 className="text-sm font-semibold mb-3">Prisintervall (kr/dag)</h3>
                     <Slider
                       value={priceRange}
                       min={0}
-                      max={100}
-                      step={1}
+                      max={2000}
+                      step={50}
                       onValueChange={setPriceRange}
                     />
                     <div className="flex justify-between mt-2 text-sm text-gray-600">
-                      <span>${priceRange[0]}</span>
-                      <span>${priceRange[1]}</span>
+                      <span>{priceRange[0]} kr</span>
+                      <span>{priceRange[1]} kr</span>
                     </div>
                   </div>
                   
                   {/* Mobile Capacity Filter */}
                   <div>
-                    <h3 className="text-sm font-semibold mb-3">Minimum Seats</h3>
+                    <h3 className="text-sm font-semibold mb-3">Antal platser</h3>
                     <Slider
                       value={[minSeats]}
                       min={1}
@@ -129,13 +159,30 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                       onValueChange={(value) => setMinSeats(value[0])}
                     />
                     <div className="mt-2 text-sm text-gray-600">
-                      <span>At least {minSeats} seats</span>
+                      <span>Minst {minSeats} platser</span>
+                    </div>
+                  </div>
+                  
+                  {/* Mobile Office Type Filter */}
+                  <div>
+                    <h3 className="text-sm font-semibold mb-3">Kontorstyp</h3>
+                    <div className="space-y-2">
+                      {officeTypes.map((type) => (
+                        <div key={type.value} className="flex items-center space-x-2">
+                          <Checkbox
+                            id={`mobile-type-${type.value}`}
+                            checked={selectedOfficeTypes.includes(type.value)}
+                            onCheckedChange={() => toggleOfficeType(type.value)}
+                          />
+                          <Label htmlFor={`mobile-type-${type.value}`}>{type.label}</Label>
+                        </div>
+                      ))}
                     </div>
                   </div>
                   
                   {/* Mobile Amenities Filter */}
                   <div>
-                    <h3 className="text-sm font-semibold mb-3">Amenities</h3>
+                    <h3 className="text-sm font-semibold mb-3">Bekvämligheter</h3>
                     <div className="space-y-2">
                       {commonAmenities.map((amenity) => (
                         <div key={amenity} className="flex items-center space-x-2">
@@ -156,7 +203,7 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                       variant="outline"
                       onClick={clearFilters}
                     >
-                      Clear Filters
+                      Rensa Filter
                     </Button>
                     <Button
                       type="button"
@@ -165,7 +212,7 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                         document.body.click(); // Close the sheet
                       }}
                     >
-                      Apply Filters
+                      Tillämpa Filter
                     </Button>
                   </div>
                 </div>
@@ -176,24 +223,24 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
           {/* Desktop Filter Options */}
           <div className="hidden md:flex gap-6 items-center">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">Price:</span>
+              <span className="text-sm font-medium">Pris:</span>
               <div className="w-48">
                 <Slider
                   value={priceRange}
                   min={0}
-                  max={100}
-                  step={5}
+                  max={2000}
+                  step={50}
                   onValueChange={setPriceRange}
                 />
                 <div className="flex justify-between text-xs text-gray-500">
-                  <span>${priceRange[0]}</span>
-                  <span>${priceRange[1]}</span>
+                  <span>{priceRange[0]} kr</span>
+                  <span>{priceRange[1]} kr</span>
                 </div>
               </div>
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm font-medium">Min Seats:</span>
+              <span className="text-sm font-medium">Platser:</span>
               <div className="w-24">
                 <Slider
                   value={[minSeats]}
@@ -208,15 +255,28 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
               </div>
             </div>
             
+            <Select>
+              <SelectTrigger className="w-[180px]">
+                <SelectValue placeholder="Kontorstyp" />
+              </SelectTrigger>
+              <SelectContent>
+                {officeTypes.map((type) => (
+                  <SelectItem key={type.value} value={type.value}>
+                    {type.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" className="text-sm">
-                  Amenities ({selectedAmenities.length})
+                  Bekvämligheter ({selectedAmenities.length})
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                 <SheetHeader>
-                  <SheetTitle>Amenities</SheetTitle>
+                  <SheetTitle>Bekvämligheter</SheetTitle>
                 </SheetHeader>
                 <div className="mt-6 grid grid-cols-1 gap-3">
                   {commonAmenities.map((amenity) => (
@@ -237,18 +297,18 @@ const SearchFilters = ({ onSearch }: SearchFiltersProps) => {
                       document.body.click(); // Close the sheet
                     }}
                   >
-                    Apply
+                    Tillämpa
                   </Button>
                 </div>
               </SheetContent>
             </Sheet>
             
             <Button type="button" variant="ghost" onClick={clearFilters} className="text-sm">
-              Clear
+              Rensa
             </Button>
           </div>
           
-          <Button type="submit">Search</Button>
+          <Button type="submit">Sök</Button>
         </form>
       </div>
     </div>

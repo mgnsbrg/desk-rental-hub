@@ -14,35 +14,35 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <Building className="h-6 w-6 text-brand-600" />
-            <span className="text-xl font-bold text-brand-600">DeskRentalHub</span>
+            <span className="text-xl font-bold text-brand-600">KontorsDelning</span>
           </Link>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className="text-gray-700 hover:text-brand-600 font-medium">
-              Home
+              Hem
             </Link>
-            <Link to="/browse" className="text-gray-700 hover:text-brand-600 font-medium">
-              Find Spaces
+            <Link to="/utforska" className="text-gray-700 hover:text-brand-600 font-medium">
+              Hitta Kontor
             </Link>
-            <Link to="/how-it-works" className="text-gray-700 hover:text-brand-600 font-medium">
-              How It Works
+            <Link to="/hur-det-fungerar" className="text-gray-700 hover:text-brand-600 font-medium">
+              Hur Det Fungerar
             </Link>
-            <Link to="/list-space" className="text-gray-700 hover:text-brand-600 font-medium">
-              List Your Space
+            <Link to="/lista-kontor" className="text-gray-700 hover:text-brand-600 font-medium">
+              Annonsera Ditt Kontor
             </Link>
           </div>
           
           {/* User Actions */}
           <div className="hidden md:flex items-center space-x-3">
-            <Link to="/login">
+            <Link to="/logga-in">
               <Button variant="outline" className="border-brand-500 text-brand-600 hover:bg-brand-50">
-                Log In
+                Logga In
               </Button>
             </Link>
-            <Link to="/register">
+            <Link to="/registrera">
               <Button className="bg-brand-600 hover:bg-brand-700 text-white">
-                Sign Up
+                Registrera Dig
               </Button>
             </Link>
           </div>
@@ -67,38 +67,38 @@ const Navbar = () => {
                 className="text-gray-700 hover:text-brand-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Home
+                Hem
               </Link>
               <Link 
-                to="/browse" 
+                to="/utforska" 
                 className="text-gray-700 hover:text-brand-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                Find Spaces
+                Hitta Kontor
               </Link>
               <Link 
-                to="/how-it-works" 
+                to="/hur-det-fungerar" 
                 className="text-gray-700 hover:text-brand-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                How It Works
+                Hur Det Fungerar
               </Link>
               <Link 
-                to="/list-space" 
+                to="/lista-kontor" 
                 className="text-gray-700 hover:text-brand-600 font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
-                List Your Space
+                Annonsera Ditt Kontor
               </Link>
               <div className="pt-2 flex flex-col space-y-2">
-                <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/logga-in" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="outline" className="w-full border-brand-500 text-brand-600">
-                    Log In
+                    Logga In
                   </Button>
                 </Link>
-                <Link to="/register" onClick={() => setIsMenuOpen(false)}>
+                <Link to="/registrera" onClick={() => setIsMenuOpen(false)}>
                   <Button className="w-full bg-brand-600 hover:bg-brand-700 text-white">
-                    Sign Up
+                    Registrera Dig
                   </Button>
                 </Link>
               </div>
